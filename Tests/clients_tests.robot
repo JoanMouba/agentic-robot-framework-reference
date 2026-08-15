@@ -110,6 +110,34 @@ Soumettre Sans Email Devrait Afficher Une Erreur
     Cliquer Sur Enregistrer Le Client
     L'Erreur Champs Obligatoires Devrait Être Affichée
 
+# ── Compteur clients ──────────────────────────────────────────
+
+Le Compteur De Clients Devrait Afficher Le Nombre De Clients Enregistrés
+    [Documentation]    Le compteur de la page clients affiche un texte contenant "client(s) enregistré(s)".
+    [Tags]    smoke    compteur
+    [Setup]    Aller Sur La Page Clients
+    Le Compteur De Clients Devrait Être Visible
+    Le Compteur De Clients Devrait Afficher Le Texte Attendu
+
+Le Compteur De Clients Devrait S'Incrémenter Après L'Ajout D'Un Client
+    [Documentation]    Après l'ajout d'un nouveau client, le compteur reflète le nouveau total (+1).
+    [Tags]    compteur    ajout
+    [Setup]    Aller Sur La Page Clients
+    ${nombre_avant}=    Obtenir Le Nombre Depuis Le Compteur Clients
+    ${timestamp}=    Get Time    epoch
+    ${email_test}=    Set Variable    test.rf.compteur.${timestamp}@epignosis.center
+    Créer Un Nouveau Client
+    ...    email=${email_test}
+    ...    prenom=Laura
+    ...    nom=Martin
+    ...    ville=Paris
+    ...    region=IDF
+    ...    genre=Femme
+    Aller Sur La Page Clients
+    ${nombre_apres}=    Obtenir Le Nombre Depuis Le Compteur Clients
+    ${nombre_attendu}=    Evaluate    ${nombre_avant} + 1
+    Should Be Equal As Integers    ${nombre_apres}    ${nombre_attendu}
+
 # ── Navigation ────────────────────────────────────────────────
 
 Le Bouton Annuler Devrait Retourner À La Liste

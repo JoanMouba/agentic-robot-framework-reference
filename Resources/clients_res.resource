@@ -67,6 +67,29 @@ Obtenir Le Nombre De Clients
     ${nb}=    Get Element Count    ${LIGNES_CLIENTS}
     RETURN    ${nb}
 
+# ── Compteur clients ─────────────────────────────────────────
+Le Compteur De Clients Devrait Être Visible
+    [Documentation]    Vérifie que le compteur de clients est affiché sur la page.
+    Wait Until Element Is Visible    ${COMPTEUR_CLIENTS}    timeout=${TIMEOUT}
+    Element Should Be Visible        ${COMPTEUR_CLIENTS}
+
+Le Compteur De Clients Devrait Afficher Le Texte Attendu
+    [Documentation]    Vérifie que le compteur contient le texte "client(s) enregistré(s)".
+    Wait Until Element Is Visible    ${COMPTEUR_CLIENTS}    timeout=${TIMEOUT}
+    Element Should Contain           ${COMPTEUR_CLIENTS}    client(s) enregistré
+
+Obtenir Le Texte Du Compteur Clients
+    [Documentation]    Retourne le texte brut affiché par le compteur de clients.
+    Wait Until Element Is Visible    ${COMPTEUR_CLIENTS}    timeout=${TIMEOUT}
+    ${texte}=    Get Text    ${COMPTEUR_CLIENTS}
+    RETURN    ${texte}
+
+Obtenir Le Nombre Depuis Le Compteur Clients
+    [Documentation]    Extrait la valeur numérique affichée par le compteur de clients.
+    ${texte}=    Obtenir Le Texte Du Compteur Clients
+    ${nombre}=    Evaluate    int(re.search(r'\\d+', """${texte}""").group())    modules=re
+    RETURN    ${nombre}
+
 # ── Formulaire nouveau client ────────────────────────────────
 Saisir L'Email Du Client
     [Documentation]    Saisit l'adresse email dans le formulaire.
