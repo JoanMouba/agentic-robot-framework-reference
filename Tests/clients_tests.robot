@@ -116,7 +116,7 @@ Le Compteur De Clients Devrait Afficher Le Nombre De Clients Enregistrés
     [Documentation]    Le compteur de la page clients affiche un texte contenant "client(s) enregistré(s)".
     [Tags]    smoke    compteur
     [Setup]    Aller Sur La Page Clients
-    Le Compteur De Clients Devrait Être Visible
+    Le Compteur De Clients Devrait Etre Visible
     Le Compteur De Clients Devrait Afficher Le Texte Attendu
 
 Le Compteur De Clients Devrait S'Incrémenter Après L'Ajout D'Un Client

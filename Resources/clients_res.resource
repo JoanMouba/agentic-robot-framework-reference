@@ -68,7 +68,7 @@ Obtenir Le Nombre De Clients
     RETURN    ${nb}
 
 # ── Compteur clients ─────────────────────────────────────────
-Le Compteur De Clients Devrait Être Visible
+Le Compteur De Clients Devrait Etre Visible
     [Documentation]    Vérifie que le compteur de clients est affiché sur la page.
     Wait Until Element Is Visible    ${COMPTEUR_CLIENTS}    timeout=${TIMEOUT}
     Element Should Be Visible        ${COMPTEUR_CLIENTS}
