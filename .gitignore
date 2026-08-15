@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.pyc
+Results/*.xml
+Results/*.html
+Results/*.png
+!Results/.gitkeep
